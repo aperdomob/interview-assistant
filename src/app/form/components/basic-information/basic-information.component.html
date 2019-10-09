@@ -1,0 +1,20 @@
+<div class="form-container">
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Interviewer">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Candidate">
+  </mat-form-field>
+  <mat-checkbox class="example-margin" [(ngModel)]="checked">Software Developer Engineer in Test</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="checked">Quality Assurance Enginner</mat-checkbox>
+  <mat-form-field>
+    <input matInput placeholder="Interview File" type="file ">
+  </mat-form-field>
+</div>
+
+<app-rol-form></app-rol-form>

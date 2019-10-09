@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BasicInformationComponent } from './form/components/basic-information/basic-information.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [{
+  path: '',
+  component: BasicInformationComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
