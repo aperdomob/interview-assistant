@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IRol } from '../../entities/IRol';
+import { AssistantEngineService } from '../../services/assistant-engine.service';
+import { IKnowledgeAssessment } from '../../entities/IknowledgeAssessment';
+import { sdet } from '../../../assets/sdet';
 
 @Component({
   selector: 'app-rol-form',
@@ -7,27 +10,16 @@ import { IRol } from '../../entities/IRol';
   styleUrls: ['./rol-form.component.css']
 })
 export class RolFormComponent implements OnInit {
-  rol: IRol = {
-    name: 'Software Developer Engineer in Test',
-    skills: [{
-      name: 'Locators',
-      items: [
-        'XPath',
-        'ID',
-        'Class',
-        'CSS'
-      ],
-      suggestedQuestions: [
-        'Question 1',
-        'Question 2',
-        'Question 3'
-      ]
-    }]
-  };
+  rolName = sdet.name;
+  skills: IKnowledgeAssessment[] = [];
 
-  constructor() { }
+  constructor(private assistantEngineService: AssistantEngineService) { }
 
   ngOnInit() {
-  }
+    this.assistantEngineService.suggestions.subscribe((skills: IKnowledgeAssessment[]) => {
+      this.skills = skills;
+    });
 
+    this.assistantEngineService.loadInterview(sdet);
+  }
 }

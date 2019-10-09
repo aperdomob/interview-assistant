@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ISkill } from '../../entities/ISkill';
+import { IKnowledgeAssessment } from '../../entities/IknowledgeAssessment';
 
 @Component({
   selector: 'app-skill-form',
@@ -7,7 +8,7 @@ import { ISkill } from '../../entities/ISkill';
   styleUrls: ['./skill-form.component.css']
 })
 export class SkillFormComponent implements OnInit {
-  @Input() skill: ISkill;
+  @Input() skill: IKnowledgeAssessment;
 
   constructor() { }
 
