@@ -1,1 +1,4 @@
-<p>rol-form works!</p>
+<h2>{{rol.name}}</h2>
+<app-skill-form *ngFor="let skill of rol.skills"
+  [skill]="skill"
+></app-skill-form>
