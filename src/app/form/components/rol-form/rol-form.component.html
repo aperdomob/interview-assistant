@@ -1,4 +1,5 @@
 <h2>{{rolName}}</h2>
 <app-skill-form *ngFor="let skill of skills"
   [skill]="skill"
+  (assessmentChange)="updateSkill($event)"
 ></app-skill-form>

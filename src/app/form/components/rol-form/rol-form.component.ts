@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IRol } from '../../entities/IRol';
 import { AssistantEngineService } from '../../services/assistant-engine.service';
 import { IKnowledgeAssessment } from '../../entities/IknowledgeAssessment';
 import { sdet } from '../../../assets/sdet';
@@ -21,5 +20,9 @@ export class RolFormComponent implements OnInit {
     });
 
     this.assistantEngineService.loadInterview(sdet);
+  }
+
+  updateSkill(skill: IKnowledgeAssessment) {
+    this.assistantEngineService.updateAssessment(skill);
   }
 }

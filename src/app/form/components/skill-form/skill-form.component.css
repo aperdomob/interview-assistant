@@ -5,3 +5,13 @@
 .quetion-card {
   width: 100%;
 }
+
+.assessment-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.assessment-radio-button {
+  margin: 5px;
+}

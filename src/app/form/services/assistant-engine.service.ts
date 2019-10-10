@@ -22,8 +22,45 @@ export class AssistantEngineService {
     this.suggestionsBehaviorSubject.next(suggestions);
   }
 
+  public updateAssessment(skill: IKnowledgeAssessment): void {
+    const skillToUpdate = this.findSkill(skill.id);
+
+    if (typeof skillToUpdate !== 'undefined') {
+      skillToUpdate.hasSkill = skill.hasSkill;
+      const suggestions = this.getSuggestion();
+      this.suggestionsBehaviorSubject.next(suggestions);
+    }
+  }
+
+  private findSkill(id: string): IKnowledgeAssessment {
+    return this.findSkillIntoInterview(id, this.interview);
+  }
+
+  private findSkillIntoInterview(id: string, interviewItem: IKnowledge) {
+    if (interviewItem.id === id) {
+      return interviewItem;
+    }
+
+    if (interviewItem.skills.length === 0) {
+      return undefined;
+    }
+
+    const internals = interviewItem.skills
+      .map((current) => this.findSkillIntoInterview(id, current))
+      .filter((current) => typeof current !== 'undefined');
+
+    if (internals.length > 0) {
+      return internals[0];
+    }
+
+    return undefined;
+  }
+
   private getSuggestion(): IKnowledgeAssessment[] {
-    return this.inspectInterview(this.interview);
+    const suggestions = this.inspectInterview(this.interview);
+
+    // return suggestions.reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], []);
+    return suggestions;
   }
 
   private inspectInterview(interviewItem: IKnowledge): IKnowledgeAssessment[] {
@@ -32,13 +69,22 @@ export class AssistantEngineService {
         return [];
 
       case Assessment.YES:
-        return interviewItem.skills.reduce((pv, cv) => pv.concat(this.inspectInterview(cv)), []);
+        const skills = interviewItem.skills.reduce((pv, cv) => pv.concat(this.inspectInterview(cv)), []);
+        return skills;
 
       case Assessment.UNKNOWN:
-        return [interviewItem];
+        return [this.transform(interviewItem)];
 
       default:
         return [];
     }
+  }
+
+  private transform(knowledge: IKnowledge): IKnowledgeAssessment {
+    return {
+      id: knowledge.id,
+      name: knowledge.name,
+      hasSkill: knowledge.hasSkill
+    };
   }
 }

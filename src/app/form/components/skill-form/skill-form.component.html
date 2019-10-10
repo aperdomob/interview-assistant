@@ -1,17 +1,15 @@
-<!-- <mat-card class="quetion-card">
+<mat-card *ngIf="this.skill" class="quetion-card">
   <mat-card-header>
     <mat-card-title>{{skill.name}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <section>
-      <mat-checkbox *ngFor="let item of skill.items" class="knowledge-item">{{item}}</mat-checkbox>
-    </section>
+    <mat-radio-group class="assessment-radio-group" [(ngModel)]="skill.hasSkill">
+      <mat-radio-button *ngFor="let item of assestmentValues" class="assessment-radio-button" [value]="item.value" (change)="updateAssesment($event)">{{item.text}}</mat-radio-button>
+    </mat-radio-group>
   </mat-card-content>
-  <mat-card-footer>
+  <!-- <mat-card-footer>
     <ul>
       <li *ngFor="let question of skill.suggestedQuestions">{{question}}</li>
     </ul>
-  </mat-card-footer>
-</mat-card> -->
-
-<p>{{skill.name}}: {{skill.hasSkill}}</p>
+  </mat-card-footer> -->
+</mat-card>

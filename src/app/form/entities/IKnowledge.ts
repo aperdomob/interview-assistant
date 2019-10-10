@@ -5,6 +5,7 @@ export enum Assessment {
 }
 
 export interface IKnowledge {
+  id: string;
   name: string;
   hasSkill: Assessment;
   skills: IKnowledge[];

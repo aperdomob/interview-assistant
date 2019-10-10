@@ -9,12 +9,13 @@ import { BasicInformationComponent } from './form/components/basic-information/b
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { SkillFormComponent } from './form/components/skill-form/skill-form.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { RolFormComponent } from './form/components/rol-form/rol-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RolFormComponent } from './form/components/rol-form/rol-form.component'
     MatInputModule,
     MatCheckboxModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   exports: [
     MatDatepickerModule
