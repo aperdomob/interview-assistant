@@ -1,0 +1,17 @@
+.assessment-radio-button {
+  padding-left: 15px;
+}
+
+.assessment-radio-group {
+  padding-left: 50px;
+}
+
+.mat {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 2rem 1fr 25rem;
+}
+
+.form {
+  padding: 0 15px;
+}

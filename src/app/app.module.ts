@@ -16,6 +16,11 @@ import { SkillFormComponent } from './form/components/skill-form/skill-form.comp
 import { MatCardModule } from '@angular/material/card';
 import { RolFormComponent } from './form/components/rol-form/rol-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { MatRadioModule } from '@angular/material/radio';
     MatCheckboxModule,
     FormsModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule,
+    MatTreeModule,
+    MatIconModule,
+    MatProgressBarModule,
+    MatButtonModule
   ],
   exports: [
     MatDatepickerModule

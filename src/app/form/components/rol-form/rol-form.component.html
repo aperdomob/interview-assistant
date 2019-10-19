@@ -1,5 +1,32 @@
-<h2>{{rolName}}</h2>
-<app-skill-form *ngFor="let skill of skills"
+<div class="form">
+  <h2>{{rolName}}</h2>
+  <!-- <app-skill-form *ngFor="let skill of skills"
   [skill]="skill"
   (assessmentChange)="updateSkill($event)"
-></app-skill-form>
+></app-skill-form> -->
+
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- This is the tree node template for leaf nodes -->
+    <!-- <mat-tree-node class="mat" *matTreeNodeDef="let node" matTreeNodePadding>
+      <button mat-icon-button disabled></button>
+      {{node.name}}
+      <mat-radio-group class="assessment-radio-group" [(ngModel)]="node.hasSkill">
+        <mat-radio-button *ngFor="let item of assestmentValues" class="assessment-radio-button" [value]="item.value" (change)="onAssessmentChange($event, node)">{{item.text}}</mat-radio-button>
+      </mat-radio-group>
+    </mat-tree-node> -->
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node class="mat" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+      <button *ngIf="node.expandable" mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+      <button *ngIf="!node.expandable" mat-icon-button disabled></button>
+      {{node.name}}
+      <!-- <mat-radio-group class="assessment-radio-group" [(ngModel)]="skill.hasSkill"> -->
+      <mat-radio-group class="assessment-radio-group"  [(ngModel)]="node.hasSkill">
+        <mat-radio-button *ngFor="let item of assestmentValues" class="assessment-radio-button" [value]="item.value" (change)="onAssessmentChange($event, node)">{{item.text}}</mat-radio-button>
+      </mat-radio-group>
+    </mat-tree-node>
+  </mat-tree>
+</div>
